@@ -92,6 +92,15 @@ nyc_airbnb %>%
   geom_point()
 ```
 ```{r}
+pal <- colorNumeric("viridis", nyc_airbnb %>% pull(stars))
 
+nyc_airbnb %>% 
+  sample_n(5000) %>% 
+  leaflet() %>% 
+  addProviderTiles(providers$CartoDB.Positron) %>% 
+  addCircleMarkers(~lat, ~long, radius = 1, color = ~ pal(stars)) 
+  
 ```
 
+
+His though process. What happens in the leaflet package. Using the leaflet package and copy and past code and then figured out what was needed to be done. Leaflet syntax is not all that different from what we learned in ggplot. 
